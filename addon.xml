@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.revolve.helper" name="Revolve skin helper script" version="0.0.1" provider-name="Malthus">
+<addon id="script.revolve.service" name="Revolve skin script" version="1.0.0~beta1" provider-name="Malthus">
 	<requires>
 		<import addon="xbmc.python" version="2.13.0"/>
 		<import addon="xbmc.addon" version="12.0.0"/>
@@ -8,14 +8,14 @@
 	<extension point="xbmc.python.library" library="default.py" />
 	<extension point="xbmc.addon.metadata">
 		<language></language>
-		<summary lang="en">Revolve skin helper script</summary>
-		<description lang="en">Helper script that realizes some necessary functions for the Revolve skin.[CR][CR]Script by Malthus.</description>
+		<summary lang="en">Revolve skin script</summary>
+		<description lang="en">Script that realizes some necessary functions for the Revolve skin.[CR][CR]Script by Malthus.</description>
         <disclaimer lang="en"></disclaimer>
 		<platform>all</platform>
-		<license></license>
+		<license>GNU General Public License, Version 2</license>
 		<forum></forum>
 		<website></website>
         <email></email>
-		<source></source>
+		<source>https://github.com/Malthus/script.revolve.service</source>
 	</extension>
 </addon>
