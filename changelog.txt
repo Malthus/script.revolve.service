@@ -1,4 +1,8 @@
-﻿[B]1.0.0~beta1[/B]
+﻿[B]1.0.0[/B]
+
+- Updated the version.
+
+[B]1.0.0~beta1[/B]
 
 - Renamed the script (script.revolve.helper -> script.revolve.service).
 
