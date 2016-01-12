@@ -103,6 +103,12 @@ def setItemToSkinSetting(skinsetting, item):
     else:
         xbmc.executebuiltin('Skin.Reset(' + skinsetting + ')')
     
+def setBooleanItemToSkinSetting(skinsetting, item):
+    if item:
+        xbmc.executebuiltin('Skin.SetBool(' + skinsetting + ')')
+    else:
+        xbmc.executebuiltin('Skin.Reset(' + skinsetting + ')')
+    
 # Data Copy Methods    
     
 def copySkinSettingToProperty(skinsetting, property, window):
@@ -113,7 +119,22 @@ def copyBooleanSkinSettingToProperty(skinsetting, property, window):
     item = getBooleanItemFromSkinSetting(skinsetting)
     setItemToProperty(property, item, window)
 
-    
+def swapProperties(property, otherproperty, window):
+    item = getItemFromProperty(property, window)
+    setItemToProperty(property, getItemFromProperty(otherproperty, window), window)
+    setItemToProperty(otherproperty, item, window)
+
+def swapSkinSettings(skinsetting, otherskinsetting):
+    item = getItemFromSkinSetting(skinsetting)
+    setItemToSkinSetting(skinsetting, getItemFromSkinSetting(otherskinsetting))
+    setItemToSkinSetting(otherskinsetting, item)
+
+def swapBooleanSkinSettings(skinsetting, otherskinsetting):
+    item = getBooleanItemFromSkinSetting(skinsetting)
+    setBooleanItemToSkinSetting(skinsetting, getBooleanItemFromSkinSetting(otherskinsetting))
+    setBooleanItemToSkinSetting(otherskinsetting, item)
+
+   
 # File Methods
 
 def translatePath(filename):
