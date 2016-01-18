@@ -3,6 +3,7 @@
 import sys
 import xbmc
 
+import baselibrary
 import xbmclibrary
 
 FUNCTIONNAME = 'Revolve/swapMenuSkinSettings'
