@@ -77,7 +77,7 @@ def getItemFromSkinSetting(skinsetting):
 
 def getBooleanItemFromSkinSetting(skinsetting):
     item = getItemFromInfoLabel('Skin.HasSetting(' + skinsetting + ')')
-    if item == '':
+    if item != 'True':
         item = 'False'
     return item
 
@@ -104,7 +104,7 @@ def setItemToSkinSetting(skinsetting, item):
         xbmc.executebuiltin('Skin.Reset(' + skinsetting + ')')
     
 def setBooleanItemToSkinSetting(skinsetting, item):
-    if item:
+    if item == 'True':
         xbmc.executebuiltin('Skin.SetBool(' + skinsetting + ')')
     else:
         xbmc.executebuiltin('Skin.Reset(' + skinsetting + ')')
