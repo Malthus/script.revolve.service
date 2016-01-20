@@ -1,4 +1,9 @@
-﻿[B]1.0.1[/B]
+﻿[B]1.0.2[/B]
+
+- Added a function to swap two custom menu options (for menu rearrangement).
+- Added a new library with basic methods (to decrease the amount of duplicate code).
+
+[B]1.0.1[/B]
 
 - Updated the version for the official Kodi repository.
 
