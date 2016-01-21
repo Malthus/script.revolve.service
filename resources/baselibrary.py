@@ -1,6 +1,7 @@
 # *  Library: Basic Functions
 
 import sys
+import time
 import xbmc
 
 # Methods
@@ -11,3 +12,6 @@ def extractArgument(arguments, index, defaultvalue):
     else:
         value = defaultvalue
     return value
+
+def getTimeInMilliseconds():
+    return int(round(time.time() * 1000))

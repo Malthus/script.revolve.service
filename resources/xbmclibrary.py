@@ -97,6 +97,12 @@ def setItemToProperty(property, item, window):
     else:
         xbmc.executebuiltin('ClearProperty(' + property + ',' + window + ')')
     
+def setItemToLockedProperty(property, item, window):
+    if item != '':
+        xbmc.executebuiltin('SetProperty(' + property + ',' + escapeValue(item) + ',' + window + ')', True)
+    else:
+        xbmc.executebuiltin('ClearProperty(' + property + ',' + window + ')', True)
+    
 def setItemToSkinSetting(skinsetting, item):
     if item != '':
         xbmc.executebuiltin('Skin.SetString(' + skinsetting + ',' + escapeValue(item) + ')')
