@@ -2,7 +2,6 @@
 
 import sys
 import time
-import xbmc
 
 # Methods
 
