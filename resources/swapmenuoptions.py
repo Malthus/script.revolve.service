@@ -1,72 +1,80 @@
-# *  Function: Revolve/swapMenuSkinSettings
+# *  Function: Revolve/swap_menu_skinsettings
 
 import sys
 import xbmc
 
-import baselibrary
-import xbmclibrary
+import resources.baselibrary as baselibrary
+import resources.xbmclibrary as xbmclibrary
 
-FUNCTIONNAME = 'Revolve/swapMenuSkinSettings'
+
+FUNCTIONNAME = 'Revolve/swap_menu_skinsettings'
 LOCKPROPERTY = '.Lock'
 
-def getLockOnOption(optionbase, targetwindow):
-    return xbmclibrary.getItemFromProperty(optionbase + LOCKPROPERTY, targetwindow)
 
-def setLockOnOption(optionbase, targetwindow, lockid):
-    if getLockOnOption(optionbase, targetwindow) == '':
-        xbmclibrary.setItemToLockedProperty(optionbase + LOCKPROPERTY, lockid, targetwindow)
-    return getLockOnOption(optionbase, targetwindow) == lockid
+def get_lock_on_option(optionbase, targetwindow):
+    return xbmclibrary.get_item_from_property(optionbase + LOCKPROPERTY, targetwindow)
 
-def releaseLockOnOption(optionbase, targetwindow):
-    xbmclibrary.clearProperty(optionbase + LOCKPROPERTY, targetwindow)
 
-def checkMenuOptionLocks(sourcebase, targetbase, targetwindow, lockid):    
-    return (getLockOnOption(sourcebase, targetwindow) == lockid) and (getLockOnOption(targetbase, targetwindow) == lockid)
+def set_lock_on_option(optionbase, targetwindow, lockid):
+    if get_lock_on_option(optionbase, targetwindow) == '':
+        xbmclibrary.set_item_to_locked_property(optionbase + LOCKPROPERTY, lockid, targetwindow)
+    return get_lock_on_option(optionbase, targetwindow) == lockid
+
+
+def release_lock_on_option(optionbase, targetwindow):
+    xbmclibrary.clear_property(optionbase + LOCKPROPERTY, targetwindow)
+
+
+def check_menu_option_locks(sourcebase, targetbase, targetwindow, lockid):    
+    return (get_lock_on_option(sourcebase, targetwindow) == lockid) and (get_lock_on_option(targetbase, targetwindow) == lockid)
+
     
-def setMenuOptionLocks(propertymask, targetwindow, index, otherindex, lockid):
+def set_menu_option_locks(propertymask, targetwindow, index, otherindex, lockid):
     sourcebase = propertymask % (index)
     targetbase = propertymask % (otherindex)
 
-    if checkMenuOptionLocks(sourcebase, targetbase, targetwindow, ''):
-        if setLockOnOption(sourcebase, targetwindow, lockid):
-            setLockOnOption(targetbase, targetwindow, lockid)
+    if check_menu_option_locks(sourcebase, targetbase, targetwindow, ''):
+        if set_lock_on_option(sourcebase, targetwindow, lockid):
+            set_lock_on_option(targetbase, targetwindow, lockid)
     
-    return checkMenuOptionLocks(sourcebase, targetbase, targetwindow, lockid)
+    return check_menu_option_locks(sourcebase, targetbase, targetwindow, lockid)
 
-def releaseMenuOptionLocks(propertymask, targetwindow, index, otherindex):
+def release_menu_option_locks(propertymask, targetwindow, index, otherindex):
     sourcebase = propertymask % (index)
-    releaseLockOnOption(sourcebase, targetwindow)
+    release_lock_on_option(sourcebase, targetwindow)
 
     targetbase = propertymask % (otherindex)
-    releaseLockOnOption(targetbase, targetwindow)
+    release_lock_on_option(targetbase, targetwindow)
 
-def swapMenuProperties(propertymask, targetwindow, index, otherindex):
+
+def swap_menu_properties(propertymask, targetwindow, index, otherindex):
     sourcebase = propertymask % (index)
     targetbase = propertymask % (otherindex)
 
-    xbmclibrary.swapProperties(sourcebase + '.Type', targetbase + '.Type', targetwindow)
-    xbmclibrary.swapProperties(sourcebase + '.Active', targetbase + '.Active', targetwindow)
-    xbmclibrary.swapProperties(sourcebase + '.Name', targetbase + '.Name', targetwindow)
-    xbmclibrary.swapProperties(sourcebase + '.Subtitle', targetbase + '.Subtitle', targetwindow)
-    xbmclibrary.swapProperties(sourcebase + '.BackgroundImage', targetbase + '.BackgroundImage', targetwindow)
-    xbmclibrary.swapProperties(sourcebase + '.MenuTitle', targetbase + '.MenuTitle', targetwindow)
-    xbmclibrary.swapProperties(sourcebase + '.SourceInfo', targetbase + '.SourceInfo', targetwindow)
-    xbmclibrary.swapProperties(sourcebase + '.Window', targetbase + '.Window', targetwindow)
-    xbmclibrary.swapProperties(sourcebase + '.Action', targetbase + '.Action', targetwindow)
+    xbmclibrary.swap_properties(sourcebase + '.Type', targetbase + '.Type', targetwindow)
+    xbmclibrary.swap_properties(sourcebase + '.Active', targetbase + '.Active', targetwindow)
+    xbmclibrary.swap_properties(sourcebase + '.Name', targetbase + '.Name', targetwindow)
+    xbmclibrary.swap_properties(sourcebase + '.Subtitle', targetbase + '.Subtitle', targetwindow)
+    xbmclibrary.swap_properties(sourcebase + '.BackgroundImage', targetbase + '.BackgroundImage', targetwindow)
+    xbmclibrary.swap_properties(sourcebase + '.MenuTitle', targetbase + '.MenuTitle', targetwindow)
+    xbmclibrary.swap_properties(sourcebase + '.SourceInfo', targetbase + '.SourceInfo', targetwindow)
+    xbmclibrary.swap_properties(sourcebase + '.Window', targetbase + '.Window', targetwindow)
+    xbmclibrary.swap_properties(sourcebase + '.Action', targetbase + '.Action', targetwindow)
 
-def swapMenuSkinSettings(skinsettingmask, index, otherindex):
+
+def swap_menu_skinsettings(skinsettingmask, index, otherindex):
     sourcebase = skinsettingmask % (index)
     targetbase = skinsettingmask % (otherindex)
     
-    xbmclibrary.swapSkinSettings(sourcebase + '.Type', targetbase + '.Type')
-    xbmclibrary.swapBooleanSkinSettings(sourcebase + '.Active', targetbase + '.Active')
-    xbmclibrary.swapSkinSettings(sourcebase + '.Name', targetbase + '.Name')
-    xbmclibrary.swapSkinSettings(sourcebase + '.Subtitle', targetbase + '.Subtitle')
-    xbmclibrary.swapSkinSettings(sourcebase + '.BackgroundImage', targetbase + '.BackgroundImage')
-    xbmclibrary.swapSkinSettings(sourcebase + '.MenuTitle', targetbase + '.MenuTitle')
-    xbmclibrary.swapSkinSettings(sourcebase + '.SourceInfo', targetbase + '.SourceInfo')
-    xbmclibrary.swapSkinSettings(sourcebase + '.Window', targetbase + '.Window')
-    xbmclibrary.swapSkinSettings(sourcebase + '.Action', targetbase + '.Action')
+    xbmclibrary.swap_skinsettings(sourcebase + '.Type', targetbase + '.Type')
+    xbmclibrary.swap_boolean_skinsettings(sourcebase + '.Active', targetbase + '.Active')
+    xbmclibrary.swap_skinsettings(sourcebase + '.Name', targetbase + '.Name')
+    xbmclibrary.swap_skinsettings(sourcebase + '.Subtitle', targetbase + '.Subtitle')
+    xbmclibrary.swap_skinsettings(sourcebase + '.BackgroundImage', targetbase + '.BackgroundImage')
+    xbmclibrary.swap_skinsettings(sourcebase + '.MenuTitle', targetbase + '.MenuTitle')
+    xbmclibrary.swap_skinsettings(sourcebase + '.SourceInfo', targetbase + '.SourceInfo')
+    xbmclibrary.swap_skinsettings(sourcebase + '.Window', targetbase + '.Window')
+    xbmclibrary.swap_skinsettings(sourcebase + '.Action', targetbase + '.Action')
 
     
 def execute(arguments):
@@ -76,11 +84,11 @@ def execute(arguments):
         index = int(arguments[4])
         otherindex = int(arguments[5])
         targetwindow = arguments[6]
-        lockid = 'Lock' + str(index) + str(otherindex) + str(baselibrary.getTimeInMilliseconds())
+        lockid = 'Lock' + str(index) + str(otherindex) + str(baselibrary.get_time_in_milliseconds())
 
-        if setMenuOptionLocks(propertymask, targetwindow, index, otherindex, lockid):
-            swapMenuSkinSettings(skinsettingmask, index, otherindex)
-            swapMenuProperties(propertymask, targetwindow, index, otherindex)
-            releaseMenuOptionLocks(propertymask, targetwindow, index, otherindex)
+        if set_menu_option_locks(propertymask, targetwindow, index, otherindex, lockid):
+            swap_menu_skinsettings(skinsettingmask, index, otherindex)
+            swap_menu_properties(propertymask, targetwindow, index, otherindex)
+            release_menu_option_locks(propertymask, targetwindow, index, otherindex)
     else:
-        xbmclibrary.writeErrorMessage(FUNCTIONNAME, FUNCTIONNAME + ' terminates: Missing argument(s) in call to script.')	
+        xbmclibrary.write_error_message(FUNCTIONNAME, FUNCTIONNAME + ' terminates: Missing argument(s) in call to script.')	

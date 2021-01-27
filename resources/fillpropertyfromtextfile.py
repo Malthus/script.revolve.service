@@ -3,28 +3,31 @@
 import sys
 import xbmc
 
-import baselibrary
-import xbmclibrary
+import resources.baselibrary as baselibrary
+import resources.xbmclibrary as xbmclibrary
+
 
 FUNCTIONNAME = 'Revolve/FillPropertyFromTextFile'
 DEFAULTTARGETPROPERTY = 'TextFileContent'
 DEFAULTTARGETWINDOW = '0'
 SPECIALFILE = 'special://'
 
-def loadPropertyFromTextFile(filename, targetproperty, targetwindow):
+
+def load_property_from_textfile(filename, targetproperty, targetwindow):
     try:
-        with open(xbmclibrary.translatePath(filename)) as file:
+        with open(xbmclibrary.translate_path(filename)) as file:
             value = file.read()
-        xbmclibrary.setItemToProperty(targetproperty, value, targetwindow)
+        xbmclibrary.set_item_to_property(targetproperty, value, targetwindow)
     except IOError:
-        xbmclibrary.writeErrorMessage(FUNCTIONNAME, FUNCTIONNAME + ' terminates: Error while reading file ' + filename)
+        xbmclibrary.write_error_message(FUNCTIONNAME, FUNCTIONNAME + ' terminates: Error while reading file ' + filename)
+
 
 def execute(arguments):
     if len(arguments) > 2:
         filename = arguments[2]
-        targetproperty = baselibrary.extractArgument(arguments, 3, DEFAULTTARGETPROPERTY)
-        targetwindow = baselibrary.extractArgument(arguments, 4, DEFAULTTARGETWINDOW)
+        targetproperty = baselibrary.extract_argument(arguments, 3, DEFAULTTARGETPROPERTY)
+        targetwindow = baselibrary.extract_argument(arguments, 4, DEFAULTTARGETWINDOW)
 
-        loadPropertyFromTextFile(filename, targetproperty, targetwindow)
+        load_property_from_textfile(filename, targetproperty, targetwindow)
     else:
-        xbmclibrary.writeErrorMessage(FUNCTIONNAME, FUNCTIONNAME + ' terminates: Missing filename in call to script.')	
+        xbmclibrary.write_error_message(FUNCTIONNAME, FUNCTIONNAME + ' terminates: Missing filename in call to script.')	

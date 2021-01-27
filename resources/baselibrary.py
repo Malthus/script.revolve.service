@@ -3,17 +3,14 @@
 import sys
 import time
 
-# Methods
 
-def extractArgument(arguments, index, defaultvalue):
-    if len(arguments) > index:
-        value = arguments[index]
-    else:
-        value = defaultvalue
-    return value
+def extract_argument(arguments, index, defaultvalue):
+    return arguments[index] if len(arguments) > index else defaultvalue
 
-def getTimeInMilliseconds():
+
+def get_time_in_milliseconds():
     return int(round(time.time() * 1000))
 
-def escapePath(path):
+
+def escape_path(path):
     return path.replace('\\\\', '\\').replace('\\', '\\\\\\\\')

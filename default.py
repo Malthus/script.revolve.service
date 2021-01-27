@@ -10,7 +10,9 @@ import resources.fillpropertyfromtextfile as fillpropertyfromtextfile
 import resources.swapmenuoptions as swapmenuoptions
 import resources.generaterandomnumber as generaterandomnumber
 
+
 SCRIPTNAME = 'Revolve/Main'
+
 
 function = "-"
 if len(sys.argv) > 1:
@@ -30,8 +32,8 @@ if len(sys.argv) > 1:
         elif function == "GenerateRandomNumber":
             generaterandomnumber.execute(sys.argv)
         else:
-            xbmclibrary.writeErrorMessage(SCRIPTNAME, SCRIPTNAME + ' terminates: function ' + function + ' is unknown.')
+            xbmclibrary.write_error_message(SCRIPTNAME, SCRIPTNAME + ' terminates: function ' + function + ' is unknown.')
     except BaseException as exception:
-        xbmclibrary.writeErrorMessage(SCRIPTNAME, SCRIPTNAME + ' terminates: ' + str(exception) + '.')
+        xbmclibrary.write_error_message(SCRIPTNAME, SCRIPTNAME + ' terminates: ' + str(exception) + '.')
 else:
-    xbmclibrary.writeErrorMessage(SCRIPTNAME, SCRIPTNAME + ' terminates: Missing argument(s) in call to script.')
+    xbmclibrary.write_error_message(SCRIPTNAME, SCRIPTNAME + ' terminates: Missing argument(s) in call to script.')

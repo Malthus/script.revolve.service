@@ -3,26 +3,29 @@
 import sys
 import xbmc
 
-import baselibrary
-import xbmclibrary
+import resources.baselibrary as baselibrary
+import resources.xbmclibrary as xbmclibrary
+
 
 FUNCTIONNAME = 'Revolve/ClearProperties'
 DEFAULTTARGETWINDOW = '0'
 DEFAULTTARGETMASK = 'List%02dOption'
 TOTALITEMS = 20
 
-def clearPropertiesByMask(targetmask, targetwindow):
+
+def clear_properties_by_mask(targetmask, targetwindow):
     for index in range (1, TOTALITEMS + 1):
         targetbase = targetmask % (index)
 
-        xbmclibrary.clearProperty(targetbase + '.Name', targetwindow)
-        xbmclibrary.clearProperty(targetbase + '.Subtitle', targetwindow)
-        xbmclibrary.clearProperty(targetbase + '.Thumbnail', targetwindow)
-        xbmclibrary.clearProperty(targetbase + '.BackgroundImage', targetwindow)
-        xbmclibrary.clearProperty(targetbase + '.Action', targetwindow)
+        xbmclibrary.clear_property(targetbase + '.Name', targetwindow)
+        xbmclibrary.clear_property(targetbase + '.Subtitle', targetwindow)
+        xbmclibrary.clear_property(targetbase + '.Thumbnail', targetwindow)
+        xbmclibrary.clear_property(targetbase + '.BackgroundImage', targetwindow)
+        xbmclibrary.clear_property(targetbase + '.Action', targetwindow)
+
 
 def execute(arguments):
-    targetmask = baselibrary.extractArgument(arguments, 2, DEFAULTTARGETMASK)
-    targetwindow = baselibrary.extractArgument(arguments, 3, DEFAULTTARGETWINDOW)
+    targetmask = baselibrary.extract_argument(arguments, 2, DEFAULTTARGETMASK)
+    targetwindow = baselibrary.extract_argument(arguments, 3, DEFAULTTARGETWINDOW)
     
-    clearPropertiesByMask(targetmask, targetwindow)
+    clear_properties_by_mask(targetmask, targetwindow)

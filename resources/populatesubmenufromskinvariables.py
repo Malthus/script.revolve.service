@@ -3,35 +3,35 @@
 import sys
 import xbmc
 
-import baselibrary
-import xbmclibrary
+import resources.baselibrary as baselibrary
+import resources.xbmclibrary as xbmclibrary
 
 FUNCTIONNAME = 'Revolve/PopulateSubmenuFromSkinVariables'
 DEFAULTTARGETMASK = 'MySubmenu%02dOption'
 DEFAULTTARGETWINDOW = '0'
 TOTALITEMS = 20
 
-def copyProperties(sourcemask, targetmask, targetwindow):
+def copy_properties(sourcemask, targetmask, targetwindow):
     for index in range (1, TOTALITEMS + 1):
         sourcebase = sourcemask % (index)
         targetbase = targetmask % (index)
 
-        xbmclibrary.copySkinSettingToProperty(sourcebase + '.Type', targetbase + '.Type', targetwindow)
-        xbmclibrary.copyBooleanSkinSettingToProperty(sourcebase + '.Active', targetbase + '.Active', targetwindow)
-        xbmclibrary.copySkinSettingToProperty(sourcebase + '.Name', targetbase + '.Name', targetwindow)
-        xbmclibrary.copySkinSettingToProperty(sourcebase + '.Subtitle', targetbase + '.Subtitle', targetwindow)
-        xbmclibrary.copySkinSettingToProperty(sourcebase + '.BackgroundImage', targetbase + '.BackgroundImage', targetwindow)
-        xbmclibrary.copySkinSettingToProperty(sourcebase + '.MenuTitle', targetbase + '.MenuTitle', targetwindow)
-        xbmclibrary.copySkinSettingToProperty(sourcebase + '.SourceInfo', targetbase + '.SourceInfo', targetwindow)
-        xbmclibrary.copySkinSettingToProperty(sourcebase + '.Window', targetbase + '.Window', targetwindow)
-        xbmclibrary.copySkinSettingToProperty(sourcebase + '.Action', targetbase + '.Action', targetwindow)
+        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Type', targetbase + '.Type', targetwindow)
+        xbmclibrary.copy_boolean_skinsetting_to_property(sourcebase + '.Active', targetbase + '.Active', targetwindow)
+        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Name', targetbase + '.Name', targetwindow)
+        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Subtitle', targetbase + '.Subtitle', targetwindow)
+        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.BackgroundImage', targetbase + '.BackgroundImage', targetwindow)
+        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.MenuTitle', targetbase + '.MenuTitle', targetwindow)
+        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.SourceInfo', targetbase + '.SourceInfo', targetwindow)
+        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Window', targetbase + '.Window', targetwindow)
+        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Action', targetbase + '.Action', targetwindow)
 
 def execute(arguments):
     if len(arguments) > 2:
         sourcemask = arguments[2]
-        targetmask = baselibrary.extractArgument(arguments, 3, DEFAULTTARGETMASK)
-        targetwindow = baselibrary.extractArgument(arguments, 4, DEFAULTTARGETWINDOW)
+        targetmask = baselibrary.extract_argument(arguments, 3, DEFAULTTARGETMASK)
+        targetwindow = baselibrary.extract_argument(arguments, 4, DEFAULTTARGETWINDOW)
         
-        copyProperties(sourcemask, targetmask, targetwindow)
+        copy_properties(sourcemask, targetmask, targetwindow)
     else:
-        xbmclibrary.writeErrorMessage(FUNCTIONNAME, FUNCTIONNAME + ' terminates: Missing argument(s) in call to script.')	
+        xbmclibrary.write_error_message(FUNCTIONNAME, FUNCTIONNAME + ' terminates: Missing argument(s) in call to script.')	
