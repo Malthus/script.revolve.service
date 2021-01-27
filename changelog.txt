@@ -1,6 +1,11 @@
-﻿[B]1.1.2[/B]
+﻿[B]2.0.0~beta1[/B]
 
-- Fixed bug (inproper escaping of Windows-folders in script.favourites properties).
+- Migrated the script to Python 3 (Matrix).
+- Updated the icon and the fanart.
+
+[B]1.1.2[/B]
+
+- Fixed bug (improper escaping of Windows-folders in script.favourites properties).
 
 [B]1.1.1[/B]
 
