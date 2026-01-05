@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.revolve.service" name="Revolve skin script" version="2.0.0~beta1" provider-name="Malthus">
+<addon id="script.revolve.service" name="Revolve skin script" version="3.0.0~beta1" provider-name="Malthus">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0"/>
 		<import addon="xbmc.addon" version="17.0.0"/>
