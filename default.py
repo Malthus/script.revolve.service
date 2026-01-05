@@ -3,11 +3,11 @@
 import sys
 
 import resources.xbmclibrary as xbmclibrary
-import resources.populatestaticitemsfromhomeproperties as populatestaticitemsfromhomeproperties
 import resources.populatesubmenufromskinvariables as populatesubmenufromskinvariables
 import resources.clearproperties as clearproperties
 import resources.fillpropertyfromtextfile as fillpropertyfromtextfile
 import resources.swapmenuoptions as swapmenuoptions
+import resources.executeshellcommand as executeshellcommand
 import resources.generaterandomnumber as generaterandomnumber
 
 
@@ -19,9 +19,7 @@ if len(sys.argv) > 1:
     try:
         function = sys.argv[1]
          
-        if function == "PopulateStaticItemsFromHomeProperties":
-            populatestaticitemsfromhomeproperties.execute(sys.argv)
-        elif function == "PopulateSubmenuFromSkinVariables":
+        if function == "PopulateSubmenuFromSkinVariables":
             populatesubmenufromskinvariables.execute(sys.argv)
         elif function == "ClearProperties":
             clearproperties.execute(sys.argv)
@@ -29,6 +27,8 @@ if len(sys.argv) > 1:
             fillpropertyfromtextfile.execute(sys.argv)
         elif function == "SwapMenuOptions":
             swapmenuoptions.execute(sys.argv)
+        elif function == "ExecuteShellCommand":
+            executeshellcommand.execute(sys.argv)
         elif function == "GenerateRandomNumber":
             generaterandomnumber.execute(sys.argv)
         else:
