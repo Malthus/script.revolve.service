@@ -51,30 +51,45 @@ def swap_menu_properties(propertymask, targetwindow, index, otherindex):
     sourcebase = propertymask % (index)
     targetbase = propertymask % (otherindex)
 
-    xbmclibrary.swap_properties(sourcebase + '.Type', targetbase + '.Type', targetwindow)
-    xbmclibrary.swap_properties(sourcebase + '.Active', targetbase + '.Active', targetwindow)
-    xbmclibrary.swap_properties(sourcebase + '.Name', targetbase + '.Name', targetwindow)
-    xbmclibrary.swap_properties(sourcebase + '.Subtitle', targetbase + '.Subtitle', targetwindow)
-    xbmclibrary.swap_properties(sourcebase + '.BackgroundImage', targetbase + '.BackgroundImage', targetwindow)
-    xbmclibrary.swap_properties(sourcebase + '.MenuTitle', targetbase + '.MenuTitle', targetwindow)
-    xbmclibrary.swap_properties(sourcebase + '.SourceInfo', targetbase + '.SourceInfo', targetwindow)
-    xbmclibrary.swap_properties(sourcebase + '.Window', targetbase + '.Window', targetwindow)
-    xbmclibrary.swap_properties(sourcebase + '.Action', targetbase + '.Action', targetwindow)
+    for key in baselibrary.CUSTOMOPTIONKEYS:
+        xbmclibrary.swap_properties(sourcebase + '.' + key, targetbase + '.' + key, targetwindow)
+
+#    xbmclibrary.swap_properties(sourcebase + '.Type', targetbase + '.Type', targetwindow)
+#    xbmclibrary.swap_properties(sourcebase + '.Active', targetbase + '.Active', targetwindow)
+#    xbmclibrary.swap_properties(sourcebase + '.Name', targetbase + '.Name', targetwindow)
+#    xbmclibrary.swap_properties(sourcebase + '.Subtitle', targetbase + '.Subtitle', targetwindow)
+#    xbmclibrary.swap_properties(sourcebase + '.BackgroundImage', targetbase + '.BackgroundImage', targetwindow)
+#    xbmclibrary.swap_properties(sourcebase + '.Window', targetbase + '.Window', targetwindow)
+#    xbmclibrary.swap_properties(sourcebase + '.MenuIdentifier', targetbase + '.MenuIdentifier', targetwindow)
+#    xbmclibrary.swap_properties(sourcebase + '.ContentPath', targetbase + '.ContentPath', targetwindow)
+#    xbmclibrary.swap_properties(sourcebase + '.Addon', targetbase + '.Addon', targetwindow)
+#    xbmclibrary.swap_properties(sourcebase + '.Executable', targetbase + '.Executable', targetwindow)
+#    xbmclibrary.swap_properties(sourcebase + '.Parameters', targetbase + '.Parameters', targetwindow)
+#    xbmclibrary.swap_properties(sourcebase + '.Action', targetbase + '.Action', targetwindow)
 
 
 def swap_menu_skinsettings(skinsettingmask, index, otherindex):
     sourcebase = skinsettingmask % (index)
     targetbase = skinsettingmask % (otherindex)
+
+    for key in baselibrary.CUSTOMOPTIONKEYS:
+        if key == 'Active':
+            xbmclibrary.swap_boolean_skinsettings(sourcebase + '.' + key, targetbase + '.' + key)
+        else:
+            xbmclibrary.swap_skinsettings(sourcebase + '.' + key, targetbase + '.' + key)
     
-    xbmclibrary.swap_skinsettings(sourcebase + '.Type', targetbase + '.Type')
-    xbmclibrary.swap_boolean_skinsettings(sourcebase + '.Active', targetbase + '.Active')
-    xbmclibrary.swap_skinsettings(sourcebase + '.Name', targetbase + '.Name')
-    xbmclibrary.swap_skinsettings(sourcebase + '.Subtitle', targetbase + '.Subtitle')
-    xbmclibrary.swap_skinsettings(sourcebase + '.BackgroundImage', targetbase + '.BackgroundImage')
-    xbmclibrary.swap_skinsettings(sourcebase + '.MenuTitle', targetbase + '.MenuTitle')
-    xbmclibrary.swap_skinsettings(sourcebase + '.SourceInfo', targetbase + '.SourceInfo')
-    xbmclibrary.swap_skinsettings(sourcebase + '.Window', targetbase + '.Window')
-    xbmclibrary.swap_skinsettings(sourcebase + '.Action', targetbase + '.Action')
+#    xbmclibrary.swap_skinsettings(sourcebase + '.Type', targetbase + '.Type')
+#    xbmclibrary.swap_boolean_skinsettings(sourcebase + '.Active', targetbase + '.Active')
+#    xbmclibrary.swap_skinsettings(sourcebase + '.Name', targetbase + '.Name')
+#    xbmclibrary.swap_skinsettings(sourcebase + '.Subtitle', targetbase + '.Subtitle')
+#    xbmclibrary.swap_skinsettings(sourcebase + '.BackgroundImage', targetbase + '.BackgroundImage')
+#    xbmclibrary.swap_skinsettings(sourcebase + '.Window', targetbase + '.Window')
+#    xbmclibrary.swap_skinsettings(sourcebase + '.MenuIdentifier', targetbase + '.MenuIdentifier')
+#    xbmclibrary.swap_skinsettings(sourcebase + '.ContentPath', targetbase + '.ContentPath')
+#    xbmclibrary.swap_skinsettings(sourcebase + '.Addon', targetbase + '.Addon')
+#    xbmclibrary.swap_skinsettings(sourcebase + '.Executable', targetbase + '.Executable')
+#    xbmclibrary.swap_skinsettings(sourcebase + '.Parameters', targetbase + '.Parameters')
+#    xbmclibrary.swap_skinsettings(sourcebase + '.Action', targetbase + '.Action')
 
     
 def execute(arguments):

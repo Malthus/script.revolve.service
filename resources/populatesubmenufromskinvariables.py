@@ -16,15 +16,25 @@ def copy_properties(sourcemask, targetmask, targetwindow):
         sourcebase = sourcemask % (index)
         targetbase = targetmask % (index)
 
-        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Type', targetbase + '.Type', targetwindow)
-        xbmclibrary.copy_boolean_skinsetting_to_property(sourcebase + '.Active', targetbase + '.Active', targetwindow)
-        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Name', targetbase + '.Name', targetwindow)
-        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Subtitle', targetbase + '.Subtitle', targetwindow)
-        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.BackgroundImage', targetbase + '.BackgroundImage', targetwindow)
-        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.MenuTitle', targetbase + '.MenuTitle', targetwindow)
-        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.SourceInfo', targetbase + '.SourceInfo', targetwindow)
-        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Window', targetbase + '.Window', targetwindow)
-        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Action', targetbase + '.Action', targetwindow)
+        for key in baselibrary.CUSTOMOPTIONKEYS:
+            if key == 'Active':
+                xbmclibrary.copy_boolean_skinsetting_to_property(sourcebase + '.' + key, targetbase + '.' + key, targetwindow)
+            else:
+                xbmclibrary.copy_skinsetting_to_property(sourcebase + '.' + key, targetbase + '.' + key, targetwindow)
+
+#        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Type', targetbase + '.Type', targetwindow)
+#        xbmclibrary.copy_boolean_skinsetting_to_property(sourcebase + '.Active', targetbase + '.Active', targetwindow)
+#        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Name', targetbase + '.Name', targetwindow)
+#        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Subtitle', targetbase + '.Subtitle', targetwindow)
+#        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.BackgroundImage', targetbase + '.BackgroundImage', targetwindow)
+#        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Window', targetbase + '.Window', targetwindow)
+#        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.MenuIdentifier', targetbase + '.MenuIdentifier', targetwindow)
+#        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.ContentPath', targetbase + '.ContentPath', targetwindow)
+#        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Addon', targetbase + '.Addon', targetwindow)
+#        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Executable', targetbase + '.Executable', targetwindow)
+#        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Parameters', targetbase + '.Parameters', targetwindow)
+#        xbmclibrary.copy_skinsetting_to_property(sourcebase + '.Action', targetbase + '.Action', targetwindow)
+
 
 def execute(arguments):
     if len(arguments) > 2:
