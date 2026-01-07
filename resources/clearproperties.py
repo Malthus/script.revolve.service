@@ -17,11 +17,14 @@ def clear_properties_by_mask(targetmask, targetwindow):
     for index in range (1, TOTALITEMS + 1):
         targetbase = targetmask % (index)
 
-        xbmclibrary.clear_property(targetbase + '.Name', targetwindow)
-        xbmclibrary.clear_property(targetbase + '.Subtitle', targetwindow)
-        xbmclibrary.clear_property(targetbase + '.Thumbnail', targetwindow)
-        xbmclibrary.clear_property(targetbase + '.BackgroundImage', targetwindow)
-        xbmclibrary.clear_property(targetbase + '.Action', targetwindow)
+        for key in baselibrary.CUSTOMOPTIONKEYS:
+            xbmclibrary.clear_property(targetbase + '.' + key, targetwindow)
+
+#        xbmclibrary.clear_property(targetbase + '.Name', targetwindow)
+#        xbmclibrary.clear_property(targetbase + '.Subtitle', targetwindow)
+#        xbmclibrary.clear_property(targetbase + '.Thumbnail', targetwindow)
+#        xbmclibrary.clear_property(targetbase + '.BackgroundImage', targetwindow)
+#        xbmclibrary.clear_property(targetbase + '.Action', targetwindow)
 
 
 def execute(arguments):

@@ -4,7 +4,7 @@ import sys
 import time
 
 
-CUSTOMOPTIONKEYS = ['Type', 'Active', 'Name', 'Subtitle', 'BackgroundImage', 'Window', 'MenuIdentifier', 'ContentPath', 'Addon', 'Executable', 'Parameters', 'Action']
+CUSTOMOPTIONKEYS = ['Type', 'Active', 'Name', 'Subtitle', 'Thumbnail', 'BackgroundImage', 'Window', 'MenuIdentifier', 'ContentPath', 'Addon', 'Executable', 'Parameters', 'Action']
 
 
 def extract_argument(arguments, index, defaultvalue):
